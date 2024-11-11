@@ -1,25 +1,27 @@
-# Step 1: Create a binary file and write initial content
-initial_data = b"This is the initial binary data.\n"
+# Step 1: Create a file and write initial content
+with open("file.txt", "w") as file:
+    file.write("Line 1: Welcome to our text file.\n")
+    file.write("Line 2: Hello word.\n")
+print("File created and initial content written.")
 
-with open("example.bin", "wb") as file:
-    file.write(initial_data)
-print("Binary file created and initial data written.")
-
-# Step 2: Read and display the content of the binary file
-with open("example.bin", "rb") as file:
+# Step 2: Read and display the file content
+with open("file.txt", "r") as file:
+    print("\nFile content after creation:")
     content = file.read()
-    print("\nContent of the binary file after creation:")
     print(content)
 
-# Step 3: Append additional binary data to the file
-additional_data = b"Appended binary data.\n"
+# Step 3: Modify the content (add new lines)
+new_lines = [
+    "Line 3: Paradigmas de programcion.\n",
+    "Line 4: Archivo de texto en Python.\n"
+]
 
-with open("example.bin", "ab") as file:
-    file.write(additional_data)
-print("\nAdditional data appended to the binary file.")
+with open("file.txt", "a") as file:
+    file.writelines(new_lines)
+print("\nNew lines added to the file.")
 
-# Step 4: Read and display the updated content of the binary file
-with open("example.bin", "rb") as file:
-    updated_content = file.read()
-    print("\nContent of the binary file after appending data:")
-    print(updated_content)
+# Step 4: Read and display the modified content
+with open("file.txt", "r") as file:
+    print("\nFile content after modification:")
+    modified_content = file.read()
+    print(modified_content)
